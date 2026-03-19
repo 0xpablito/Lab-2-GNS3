@@ -39,7 +39,7 @@ L'objectif est de franchir un cap supplémentaire en travaillant avec des images
 
 *(à rédiger)*
 
-🔗 [Consulter les configs]() 🧪 [Consulter les tests]()
+🔗 [Consulter les configs](/configs/01_base_setup.md) 🧪 [Consulter les tests]()
 
 ---
 
