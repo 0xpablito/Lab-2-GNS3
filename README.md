@@ -1,8 +1,100 @@
-# Lab-2-GNS3
+# Lab-2-GNS3 — Implémentation d'une Infrastructure 3-Tier Virtualisée
 
 ## 🎯 Objectifs et Démarche
 
-Ce lab réseau a été conçu et déployé dans le cadre de ma montée en compétences en infrastructure réseau d'entreprise. Il me permet de me familiariser davantage avec GNS3 comme environnement de simulation, VMware Workstation comme hyperviseur hôte, ainsi qu’avec Python et Linux, afin de reproduire une architecture réseau proche d’un environnement de production réel.
+Ce lab réseau a été conçu et déployé dans le cadre de ma montée en compétences en infrastructure réseau d'entreprise. Il me permet de me familiariser avec GNS3 comme environnement de simulation et VMware Workstation comme hyperviseur hôte, afin de reproduire une architecture réseau proche d'un environnement de production réel.
 
-L’objectif est de consolider les acquis de mon cursus Cisco CCNA, tout en explorant de nouvelles compétences pratiques. Parmi celles-ci : l’automatisation de configurations via des scripts Python basiques avec Netmiko, ainsi que le déploiement et la gestion de services réseau tels que DHCP, NTP et TFTP sur une machine Linux sous Ubuntu.
+L'objectif est de franchir un cap supplémentaire en travaillant avec des images IOS réelles sur GNS3, afin de se confronter à des comportements et des contraintes absents des simulateurs pédagogiques.
+
+🛠️ Compétences techniques validées :
+
+* **L2 (Commutation)** : VLANs, Trunks (802.1Q), EtherChannel (LACP), Spanning-Tree (PVST+, PortFast, BPDU Guard).
+* **L3 (Routage)** : Routage Inter-VLAN (SVI), OSPF, HSRP (redondance de passerelle). Services & Sécurité : DHCP, NAT/PAT (Overload), ACLs étendues, SSHv2, isolation VLAN Guest/RH.
+
+💡 [à rédiger]
+
+---
+
+## 1. 🗺️ Vue d'ensemble
+
+*à ajouter*
+
+Équipement | Rôle & Fonctionnalités Clés | Image IOS / Ressource |
+| :--- | :--- | :--- |
+| **R-EDGE-01** | **Routeur Core / Bordure** : Routage OSPF (Area 0), NAT/PAT, DHCP Server, ACLs | `Cisco vIOS 15.9(3)M6` |
+| **SW-DIST-01** | **Distribution L3** : Gateway HSRP (Active), Routage Inter-VLAN, EtherChannel | `Cisco vIOSL2` |
+| **SW-DIST-02** | **Distribution L3** : Gateway HSRP (Standby), Redondance L3, EtherChannel | `Cisco vIOSL2` |
+| **SW-ACC-01** | **Accès L2** : Segmentation VLANs, Port-Security, STP Optimization | `Cisco vIOSL2` |
+| **SW-ACC-02** | **Accès L2** : Segmentation VLANs, DHCP Snooping, DAI | `Cisco vIOSL2` |
+| **SW-ACC-03** | **Accès L2** : Connectivité Endpoints, Trunking 802.1Q | `Cisco vIOSL2` |
+| **NAT Node** | **Sortie Internet** : Pontage vers l'interface réseau physique (GNS3 Cloud) | `Built-in Node` |
+| **PC-01 à 05** | **Postes Clients** : Validation connectivité, Tests DHCP, ACL & ICMP | `VPCS` |
+
+---
+
+
+## 2. 🛠️ Implémentation technique
+
+### Phase 1 — Configuration de base & Sécurité
+
+*(à rédiger)*
+
+🔗 [Consulter les configs]() 🧪 [Consulter les tests]()
+
+---
+
+### Phase 2 — Segmentation VLAN & Trunks
+
+*(à rédiger)*
+
+🔗 [Consulter les configs]() 🧪 [Consulter les tests]()
+
+---
+
+### Phase 3 — Spanning-Tree & EtherChannel
+
+*(à rédiger)*
+
+🔗 [Consulter les configs]() 🧪 [Consulter les tests]()
+
+---
+
+### Phase 4 — Routage Inter-VLAN & OSPF
+
+*(à rédiger)*
+
+🔗 [Consulter les configs]() 🧪 [Consulter les tests]()
+
+---
+
+### Phase 5 — HSRP (Redondance de passerelle)
+
+*(à rédiger)*
+
+🔗 [Consulter les configs]() 🧪 [Consulter les tests]()
+
+---
+
+### Phase 6 — Services IP & NAT
+
+*(à rédiger)*
+
+🔗 [Consulter les configs]() 🧪 [Consulter les tests]()
+
+---
+
+### Phase 7 — ACLs & Sécurité
+
+*(à rédiger)*
+
+🔗 [Consulter les configs]() 🧪 [Consulter les tests]()
+
+---
+
+## 4. 🔍 Troubleshooting
+
+
+---
+
+## 5. 📄 Configs & Fichiers
 
