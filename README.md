@@ -37,7 +37,15 @@ L'objectif est de franchir un cap supplémentaire en travaillant avec des images
 
 ### Phase 1 — Configuration de base & Sécurité
 
-*(à rédiger)*
+Déploiement d'une configuration uniformisée sur l'ensemble des équipements
+et verrouillage des accès avant tout déploiement de service réseau.
+
+- **Accès distant** : SSHv2 exclusif avec clé RSA 2048 bits et désactivation de Telnet
+- **Identité & Accès** : Compte admin local privilege 15, enable secret haché
+- **Console & VTY** : Authentification locale, timeout 10 min, logging synchronous
+- **Sécurité DNS** : Désactivation du DNS lookup pour éviter les délais en CLI
+- **Bannière** : Message d'avertissement légal sur toutes les lignes d'accès
+- **Management** : SVI VLAN 99 dédiée sur chaque équipement (192.168.99.0/24)
 
 🔗 [Consulter les configs](/configs/01_base_setup.md) 🧪 [Consulter les tests]()
 
