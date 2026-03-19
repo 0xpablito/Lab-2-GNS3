@@ -1,12 +1,8 @@
 # Lab-2-GNS3
 
-## Introduction
+## 🎯 Objectifs et Démarche
 
-Ce lab réseau a été conçu et déployé dans le cadre de ma montée en compétences en infrastructure réseau d'entreprise. Il me permet de me familiariser davantage avec **GNS3** comme environnement de simulation, et **VMware
-Workstation** comme hyperviseur hôte, afin de reproduire une architecture réseau aussi proche que possible d'un environnement de production réel.
+Ce lab réseau a été conçu et déployé dans le cadre de ma montée en compétences en infrastructure réseau d'entreprise. Il me permet de me familiariser davantage avec GNS3 comme environnement de simulation, VMware Workstation comme hyperviseur hôte, ainsi qu’avec Python et Linux, afin de reproduire une architecture réseau proche d’un environnement de production réel.
 
-L'objectif principal est de consolider et d'approfondir les connaissances acquises lors de mon cursus **Cisco CCNA**, tout en explorant de nouvelles compétences que je souhaite mettre en pratique, telles que :
+L’objectif est de consolider les acquis de mon cursus Cisco CCNA, tout en explorant de nouvelles compétences pratiques. Parmi celles-ci : l’automatisation de configurations via des scripts Python basiques avec Netmiko, ainsi que le déploiement et la gestion de services réseau tels que DHCP, NTP et TFTP sur une machine Linux sous Ubuntu.
 
-- L'**automatisation de la configuration réseau** via Python et Netmiko
-- La prise en main de **Linux** comme serveur d'infrastructure
-  (DHCP, NTP, Syslog, TFTP)
