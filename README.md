@@ -10,6 +10,7 @@ L'objectif est de franchir un cap supplémentaire en travaillant avec des images
 
 * **L2 (Commutation)** : VLANs, Trunks (802.1Q), EtherChannel (LACP), Spanning-Tree (PVST+, PortFast, BPDU Guard).
 * **L3 (Routage)** : Routage Inter-VLAN (SVI), OSPF, HSRP (redondance de passerelle). Services & Sécurité : DHCP, NAT/PAT (Overload), ACLs étendues, SSHv2, isolation VLAN Guest/RH.
+* **Services d'annuaire** : Active Directory Domain Services (AD DS), DNS intégré, domaine Atlas.local, gestion via PowerShell (Windows Server Core)
 
 💡 [à rédiger]
 
@@ -28,7 +29,8 @@ L'objectif est de franchir un cap supplémentaire en travaillant avec des images
 | **SW-ACC-02** | **Accès L2** : Segmentation VLANs, DHCP Snooping, DAI | `Cisco vIOSL2` |
 | **SW-ACC-03** | **Accès L2** : Connectivité Endpoints, Trunking 802.1Q | `Cisco vIOSL2` |
 | **NAT Node** | **Sortie Internet** : Pontage vers l'interface réseau physique (GNS3 Cloud) | `Built-in Node` |
-| **PC-01 à 05** | **Postes Clients** : Validation connectivité, Tests DHCP, ACL & ICMP | `VPCS` |
+| **PC-01 à 05** | **Postes Clients** : Validation connectivité, Tests DHCP, ACL & ICMP | `VPCS` |	
+| **WS-DC-01** | **	Contrôleur de Domaine** : AD DS, DNS intégré, domaine Atlas.local, gestion PowerShell (Core) | `Windows Server 2022 Core` |
 
 ---
 
