@@ -39,8 +39,7 @@ L'objectif est de franchir un cap supplémentaire en travaillant avec des images
 
 ### Phase 1 — Configuration de base & Sécurité
 
-Déploiement d'une configuration uniformisée sur l'ensemble des équipements
-et verrouillage des accès avant tout déploiement de service réseau.
+Déploiement d'une configuration uniformisée sur l'ensemble des équipements et verrouillage des accès avant tout déploiement de service réseau.
 
 - **Accès distant** : SSHv2 exclusif avec clé RSA 2048 bits et désactivation de Telnet
 - **Identité & Accès** : Compte admin local privilege 15, enable secret haché
@@ -55,7 +54,13 @@ et verrouillage des accès avant tout déploiement de service réseau.
 
 ### Phase 2 — Segmentation VLAN & Trunks
 
-*(à rédiger)*
+Cette phase pose les fondations de l'isolation réseau et de la sécurité des flux.
+
+- **Segmentation** : Création de 7 VLANs distincts pour séparer les flux utilisateurs (10), serveurs (20), RH (30), invités (40), management (99), natif (100) et sécurité (999).
+- **Trunking** : Standardisation du protocole IEEE 802.1Q sur tous les liens d'interconnexion.
+- **Sécurité Native** : Modification du VLAN natif par défaut (VLAN 1) vers le VLAN 100 pour prévenir les attaques de type VLAN Hopping.
+- **VLAN BlackHole** : Assignation systématique des ports d'accès non utilisés au VLAN 999 et extinction administrative (`shutdown`).
+
 
 🔗 [Consulter les configs]() 🧪 [Consulter les tests]()
 
@@ -63,7 +68,12 @@ et verrouillage des accès avant tout déploiement de service réseau.
 
 ### Phase 3 — Spanning-Tree & EtherChannel
 
-*(à rédiger)*
+Optimisation de la bande passante inter-distribution et sécurisation de la topologie logique.
+
+- **EtherChannel (LACP)** : Agrégation des liens physiques (Gi0/1 et Gi1/1) entre SW-DIST-01 et SW-DIST-02 en un Port-Channel logique (Po1). Utilisation du protocole standard LACP pour une interopérabilité maximale et un débit de 2 Gbps.
+- **Spanning-Tree (PVST+)** : Configuration pour assurer une topologie sans boucle.
+- **STP Edge Ports** : Activation de `Spanning-Tree PortFast` sur les interfaces d'accès (PC et Serveurs) pour une mise en service immédiate des ports (passage direct en Forwarding).
+- **BPDU Guard** : Protection des ports d'accès contre le raccordement de switches non autorisés (err-disable automatique en cas de détection de BPDU).
 
 🔗 [Consulter les configs]() 🧪 [Consulter les tests]()
 
@@ -71,7 +81,14 @@ et verrouillage des accès avant tout déploiement de service réseau.
 
 ### Phase 4 — Routage Inter-VLAN & OSPF
 
-*(à rédiger)*
+Mise en place de la haute disponibilité de la passerelle par défaut pour assurer la continuité de service.
+
+- **Protocole** : Utilisation de HSRP (Hot Standby Router Protocol) version 2.
+- **Architecture** : Création d'une IP virtuelle (VIP) se terminant par `.1` dans chaque VLAN (ex: 192.168.10.1).
+- **Élection** : 
+    - **SW-DIST-01 (Active)** : Priorité forcée à 110 avec mécanisme de `preempt` pour reprendre son rôle après redémarrage.
+    - **SW-DIST-02 (Standby)** : Priorité par défaut (100) assurant la reprise instantanée en cas de défaillance du Master.
+- **Avantage** : Permet aux clients DHCP d'utiliser une passerelle unique et résiliente, indépendamment de l'état d'un switch physique spécifique.
 
 🔗 [Consulter les configs]() 🧪 [Consulter les tests]()
 
