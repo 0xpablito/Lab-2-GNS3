@@ -65,7 +65,7 @@ Segmentation VLAN, agrégation des liens de distribution (LACP) et sécurisation
     - **BPDU Guard** : Protection contre l'injection de switches non autorisés (err-disable automatique).
 - **VLAN BlackHole (999)** : Neutralisation de tous les ports inutilisés par assignation à un VLAN non routé et extinction administrative (`shutdown`).
 
-🔗 [Consulter les configs]() 🧪 [Consulter les tests]()
+🔗 [Consulter les configs](/configs/02_VLAN.md) 🧪 [Consulter les tests]()
 
 ---
 
