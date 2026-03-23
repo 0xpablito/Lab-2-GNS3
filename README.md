@@ -54,32 +54,22 @@ Déploiement d'une configuration uniformisée sur l'ensemble des équipements et
 
 ### Phase 2 — Segmentation VLAN & Trunks
 
-Cette phase pose les fondations de l'isolation réseau et de la sécurité des flux.
+Segmentation VLAN, agrégation des liens de distribution (LACP) et sécurisation des ports d'accès
 
-- **Segmentation** : Création de 7 VLANs distincts pour séparer les flux utilisateurs (10), serveurs (20), RH (30), invités (40), management (99), natif (100) et sécurité (999).
-- **Trunking** : Standardisation du protocole IEEE 802.1Q sur tous les liens d'interconnexion.
-- **Sécurité Native** : Modification du VLAN natif par défaut (VLAN 1) vers le VLAN 100 pour prévenir les attaques de type VLAN Hopping.
-- **VLAN BlackHole** : Assignation systématique des ports d'accès non utilisés au VLAN 999 et extinction administrative (`shutdown`).
-
-
-🔗 [Consulter les configs]() 🧪 [Consulter les tests]()
-
----
-
-### Phase 3 — Spanning-Tree & EtherChannel
-
-Optimisation de la bande passante inter-distribution et sécurisation de la topologie logique.
-
-- **EtherChannel (LACP)** : Agrégation des liens physiques (Gi0/1 et Gi1/1) entre SW-DIST-01 et SW-DIST-02 en un Port-Channel logique (Po1). Utilisation du protocole standard LACP pour une interopérabilité maximale et un débit de 2 Gbps.
-- **Spanning-Tree (PVST+)** : Configuration pour assurer une topologie sans boucle.
-- **STP Edge Ports** : Activation de `Spanning-Tree PortFast` sur les interfaces d'accès (PC et Serveurs) pour une mise en service immédiate des ports (passage direct en Forwarding).
-- **BPDU Guard** : Protection des ports d'accès contre le raccordement de switches non autorisés (err-disable automatique en cas de détection de BPDU).
+- **Segmentation VLAN** : Création de 7 VLANs (Users, Servers, RH, Guest, Management, Native, BlackHole) pour une isolation stricte des flux et une réduction des domaines de diffusion.
+- **Trunking & Sécurité Native** : Standardisation du protocole **IEEE 802.1Q**. Migration du VLAN natif vers le **VLAN 100** pour prévenir le *VLAN Hopping* et filtrage explicite des VLANs autorisés (`allowed vlan`).
+- **EtherChannel (LACP)** : Agrégation des liens physiques entre les switches de distribution (`SW-DIST-01/02`) en un **Port-Channel (Po1)** logique de 2 Gbps via le protocole standard LACP.
+- **Optimisation Spanning-Tree (PVST+)** : 
+    - Configuration pour garantir une topologie sans boucle.
+    - **PortFast** : Activation sur les ports d'accès pour une connectivité immédiate des endpoints.
+    - **BPDU Guard** : Protection contre l'injection de switches non autorisés (err-disable automatique).
+- **VLAN BlackHole (999)** : Neutralisation de tous les ports inutilisés par assignation à un VLAN non routé et extinction administrative (`shutdown`).
 
 🔗 [Consulter les configs]() 🧪 [Consulter les tests]()
 
 ---
 
-### Phase 4 — Routage Inter-VLAN & OSPF
+### Phase 3 — Routage Inter-VLAN & OSPF
 
 Mise en place de la haute disponibilité de la passerelle par défaut pour assurer la continuité de service.
 
@@ -94,7 +84,7 @@ Mise en place de la haute disponibilité de la passerelle par défaut pour assur
 
 ---
 
-### Phase 5 — HSRP (Redondance de passerelle)
+### Phase 4 — HSRP (Redondance de passerelle)
 
 *(à rédiger)*
 
@@ -102,7 +92,7 @@ Mise en place de la haute disponibilité de la passerelle par défaut pour assur
 
 ---
 
-### Phase 6 — Services IP & NAT
+### Phase 5 — Services IP & NAT
 
 *(à rédiger)*
 
@@ -110,7 +100,7 @@ Mise en place de la haute disponibilité de la passerelle par défaut pour assur
 
 ---
 
-### Phase 7 — ACLs & Sécurité
+### Phase 6 — ACLs & Sécurité
 
 *(à rédiger)*
 
