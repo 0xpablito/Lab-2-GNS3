@@ -77,7 +77,7 @@ Mise en place de la redondance de la passerelle par défaut pour assurer la cont
 - **Élection** : **SW-DIST-01** configuré en "Active" (Priority 110 + Preempt).
 - **Relais DHCP** : Activation du `ip helper-address` pointant vers le Windows Server (192.168.20.10).
 
-🔗 [Consulter les configs]() 🧪 [Consulter les tests]()
+🔗 [Consulter les configs](/configs/03_hsrp.md) 🧪 [Consulter les tests]()
 
 ---
 
