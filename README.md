@@ -69,24 +69,25 @@ Segmentation VLAN, agrégation des liens de distribution (LACP) et sécurisation
 
 ---
 
-### Phase 3 — Routage Inter-VLAN & OSPF
+### Phase 3 — Haute Disponibilité L3 (HSRP)
 
-Mise en place de la haute disponibilité de la passerelle par défaut pour assurer la continuité de service.
+Mise en place de la redondance de la passerelle par défaut pour assurer la continuité de service des utilisateurs.
 
-- **Protocole** : Utilisation de HSRP (Hot Standby Router Protocol) version 2.
-- **Architecture** : Création d'une IP virtuelle (VIP) se terminant par `.1` dans chaque VLAN (ex: 192.168.10.1).
-- **Élection** : 
-    - **SW-DIST-01 (Active)** : Priorité forcée à 110 avec mécanisme de `preempt` pour reprendre son rôle après redémarrage.
-    - **SW-DIST-02 (Standby)** : Priorité par défaut (100) assurant la reprise instantanée en cas de défaillance du Master.
-- **Avantage** : Permet aux clients DHCP d'utiliser une passerelle unique et résiliente, indépendamment de l'état d'un switch physique spécifique.
+- **Protocole** : HSRPv2 avec IP virtuelles (VIP) en `.1`.
+- **Élection** : **SW-DIST-01** configuré en "Active" (Priority 110 + Preempt).
+- **Relais DHCP** : Activation du `ip helper-address` pointant vers le Windows Server (192.168.20.10).
 
 🔗 [Consulter les configs]() 🧪 [Consulter les tests]()
 
 ---
 
-### Phase 4 — HSRP (Redondance de passerelle)
+### Phase 4 — Routage Dynamique (OSPF)
 
-*(à rédiger)*
+Mise en place des liens routés et du protocole OSPF pour automatiser la diffusion des réseaux VLAN vers le cœur de réseau.
+
+- **Architecture** : Liens Point-à-Point (/30) entre Distribution et Core via ports routés (`no switchport`).
+- **OSPFv2** : Processus en Area 0 avec annonces des réseaux VLAN.
+- **Sécurisation** : Utilisation de `passive-interface` sur les VLANs utilisateurs pour limiter l'exposition du protocole.
 
 🔗 [Consulter les configs]() 🧪 [Consulter les tests]()
 
