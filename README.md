@@ -1,4 +1,5 @@
 # Lab-2-GNS3 — Implémentation d'une Infrastructure 3-Tier Virtualisée
+Statut du projet : 85% — Connectivité et services opérationnels. Phase finale de sécurisation et documentation des tests en cours.
 
 ## 🎯 Objectifs et Démarche
 
@@ -18,7 +19,9 @@ L'objectif est de franchir un cap supplémentaire en travaillant avec des images
 
 ## 1. 🗺️ Vue d'ensemble
 
-*à ajouter*
+><img width="1104" height="510" alt="image" src="https://github.com/user-attachments/assets/e3612f0a-fbec-43cf-b609-8e69168c7e3c" />
+
+
 
 Équipement | Rôle & Fonctionnalités Clés | Image IOS / Ressource |
 | :--- | :--- | :--- |
@@ -114,12 +117,6 @@ Objectif : Permettre aux clients internes d'accéder au Web, de résoudre des no
 ### Phase 6 — ACLs & Sécurité
 
 Objectif : Isoler totalement le trafic de gestion et verrouiller l'accès aux plans de contrôle (Control Plane) des équipements.
-
-*   **VLAN de Management Dédié (99)** : Création d'un segment réseau isolé pour l'administration. Déploiement d'un poste **PC-MGMT** (192.168.99.50) comme unique source autorisée en mode access.
-*   **Hardening SSH (Access-Class)** :
-    *   Création d'une **ACL Standard (99)** autorisant exclusivement l'IP du PC-MGMT.
-    *   Application de l'ACL sur les lignes **VTY 0 4** de tous les équipements pour bloquer toute tentative de connexion SSH provenant des VLANs utilisateurs ou invités.
-*   **Passerelle L2** : Configuration de la `ip default-gateway 192.168.99.1` sur le switch d'accès (**SW-ACC-01**) pour permettre aux flux d'administration de répondre aux requêtes provenant d'autres sous-réseaux (Routage Inter-VLAN).
 
 *(à rédiger)*
 ---
