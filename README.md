@@ -95,7 +95,17 @@ Mise en place des liens routés et du protocole OSPF pour automatiser la diffusi
 
 ### Phase 5 — Services IP & NAT
 
-*(à rédiger)*
+Objectif : Permettre aux clients internes d'accéder au Web, de résoudre des noms de domaine et d'obtenir automatiquement leurs configurations IP.
+
+*   **NAT/PAT (Overload)** : Configuration du NAT sur le **R-EDGE-01** pour masquer les réseaux privés derrière l'IP publique dynamique fournie par le NAT Node GNS3.
+    *   *ACL de translation* : Autorisation des réseaux `192.168.0.0/16`.
+    *   *Interface Outside* : Utilisation de l'interface `GigabitEthernet0/2` connectée au nœud NAT.
+*   **Routage vers Internet** : Mise en place d'une route statique par défaut (`0.0.0.0/0`) pointant vers l'IP du prochain saut (Next-Hop) du NAT Node.
+*   **Services Windows Server (Core)** :
+    *   **DHCP** : Scopes configurés pour chaque VLAN avec option DNS (192.168.20.10) et Gateway (VIP HSRP).
+    *   **DNS** : Configuration des *Forwarders* (8.8.8.8, 1.1.1.1) sur le serveur Windows pour permettre la résolution de noms externes depuis les VPCS.
+*   **Propagation de la route** : Utilisation de la commande `default-information originate` dans le processus OSPF pour annoncer la sortie Internet à l'ensemble des switches de distribution.
+
 
 🔗 [Consulter les configs]() 🧪 [Consulter les tests]()
 
@@ -103,7 +113,16 @@ Mise en place des liens routés et du protocole OSPF pour automatiser la diffusi
 
 ### Phase 6 — ACLs & Sécurité
 
+Objectif : Isoler totalement le trafic de gestion et verrouiller l'accès aux plans de contrôle (Control Plane) des équipements.
+
+*   **VLAN de Management Dédié (99)** : Création d'un segment réseau isolé pour l'administration. Déploiement d'un poste **PC-MGMT** (192.168.99.50) comme unique source autorisée en mode access.
+*   **Hardening SSH (Access-Class)** :
+    *   Création d'une **ACL Standard (99)** autorisant exclusivement l'IP du PC-MGMT.
+    *   Application de l'ACL sur les lignes **VTY 0 4** de tous les équipements pour bloquer toute tentative de connexion SSH provenant des VLANs utilisateurs ou invités.
+*   **Passerelle L2** : Configuration de la `ip default-gateway 192.168.99.1` sur le switch d'accès (**SW-ACC-01**) pour permettre aux flux d'administration de répondre aux requêtes provenant d'autres sous-réseaux (Routage Inter-VLAN).
+
 *(à rédiger)*
+---
 
 🔗 [Consulter les configs]() 🧪 [Consulter les tests]()
 
@@ -111,8 +130,10 @@ Mise en place des liens routés et du protocole OSPF pour automatiser la diffusi
 
 ## 4. 🔍 Troubleshooting
 
-
+*(à rédiger)*
 ---
 
 ## 5. 📄 Configs & Fichiers
 
+*(à rédiger)*
+---
