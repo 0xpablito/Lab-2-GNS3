@@ -40,6 +40,14 @@ interface Vlan 40
  standby 40 ip 192.168.40.1
  standby 40 priority 110
  standby 40 preempt
+
+ --- Configuration HSRP VLAN 99 (Management) ---
+interface Vlan 99
+ ip address 192.168.99.2 255.255.255.0
+ standby version 2
+ standby 99 ip 192.168.99.1
+ standby 99 priority 110
+ standby 99 preempt
 ```
 ### 2. Configuration SW-DIST-02 (Standby)
 Priorité par défaut (100) pour rester en écoute.
@@ -65,3 +73,8 @@ interface Vlan 40
  ip address 192.168.40.3 255.255.255.0
  standby version 2
  standby 40 ip 192.168.40.1
+
+interface Vlan 99
+ ip address 192.168.99.3 255.255.255.0
+ standby version 2
+ standby 99 ip 192.168.99.1
