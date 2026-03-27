@@ -110,7 +110,7 @@ Objectif : Permettre aux clients internes d'accéder au Web, de résoudre des no
 *   **Propagation de la route** : Utilisation de la commande `default-information originate` dans le processus OSPF pour annoncer la sortie Internet à l'ensemble des switches de distribution.
 
 
-🔗 [Consulter les configs](configs/05_NAT&IP.md) 🧪 [Consulter les tests]()
+🔗 [Consulter les configs](configs/05_NAT&IP.md) 🧪 [Consulter les tests](test/05_IP&NAT.md)
 
 ---
 
