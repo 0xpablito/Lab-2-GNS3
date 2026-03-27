@@ -25,14 +25,14 @@ L'objectif est de franchir un cap supplémentaire en travaillant avec des images
 
 Équipement | Rôle & Fonctionnalités Clés | Image IOS / Ressource |
 | :--- | :--- | :--- |
-| **R-EDGE-01** | **Routeur Core / Bordure** : Routage OSPF (Area 0), NAT/PAT, DHCP Server, ACLs | `Cisco vIOS 15.9(3)M6` |
+| **R-EDGE-01** | **Routeur Core / Bordure** : Routage OSPF (Area 0), NAT/PAT, ACLs | `Cisco vIOS 15.9(3)M6` |
 | **SW-DIST-01** | **Distribution L3** : Gateway HSRP (Active), Routage Inter-VLAN, EtherChannel | `Cisco vIOSL2` |
 | **SW-DIST-02** | **Distribution L3** : Gateway HSRP (Standby), Redondance L3, EtherChannel | `Cisco vIOSL2` |
 | **SW-ACC-01** | **Accès L2** : Segmentation VLANs, Port-Security, STP Optimization | `Cisco vIOSL2` |
 | **SW-ACC-02** | **Accès L2** : Segmentation VLANs, DHCP Snooping, DAI | `Cisco vIOSL2` |
 | **SW-ACC-03** | **Accès L2** : Connectivité Endpoints, Trunking 802.1Q | `Cisco vIOSL2` |
 | **NAT Node** | **Sortie Internet** : Pontage vers l'interface réseau physique (GNS3 Cloud) | `Built-in Node` |
-| **PC-01 à 05** | **Postes Clients** : Validation connectivité, Tests DHCP, ACL & ICMP | `VPCS` |	
+| **PC-01 à 06** | **Postes Clients** : Validation connectivité, Tests DHCP, ACL & ICMP | `VPCS` |	
 | **WS-DC-01** | **	Contrôleur de Domaine** : AD DS, DNS intégré, domaine Atlas.local, gestion PowerShell (Core) | `Windows Server 2022 Core` |
 
 ---
