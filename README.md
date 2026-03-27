@@ -76,7 +76,7 @@ Segmentation VLAN, agrégation des liens de distribution (LACP) et sécurisation
 
 Mise en place de la redondance de la passerelle par défaut pour assurer la continuité de service des utilisateurs.
 
-- **Protocole** : HSRPv2 avec IP virtuelles (VIP) en `.1`.
+- **Protocole** : HSRPv2 (protocole propriétaire Cisco) avec IP virtuelles (VIP) en `.1`. 
 - **Élection** : **SW-DIST-01** configuré en "Active" (Priority 110 + Preempt).
 - **Relais DHCP** : Activation du `ip helper-address` pointant vers le Windows Server (192.168.20.10).
 
