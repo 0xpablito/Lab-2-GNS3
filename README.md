@@ -51,7 +51,7 @@ Déploiement d'une configuration uniformisée sur l'ensemble des équipements et
 - **Bannière** : Message d'avertissement légal sur toutes les lignes d'accès
 - **Management** : SVI VLAN 99 dédiée sur chaque équipement (192.168.99.0/24)
 
-🔗 [Consulter les configs](/configs/01_base_setup.md) 🧪 [Consulter les tests]()
+🔗 [Consulter les configs](/configs/01_base_setup.md) 🧪 [Consulter les tests](/test/01_base_setup.md)
 
 ---
 
@@ -68,7 +68,7 @@ Segmentation VLAN, agrégation des liens de distribution (LACP) et sécurisation
     - **BPDU Guard** : Protection contre l'injection de switches non autorisés (err-disable automatique).
 - **VLAN BlackHole (999)** : Neutralisation de tous les ports inutilisés par assignation à un VLAN non routé et extinction administrative (`shutdown`).
 
-🔗 [Consulter les configs](/configs/02_VLAN.md) 🧪 [Consulter les tests]()
+🔗 [Consulter les configs](/configs/02_VLAN.md) 🧪 [Consulter les tests](/test/02_VLAN.md)
 
 ---
 
@@ -80,7 +80,7 @@ Mise en place de la redondance de la passerelle par défaut pour assurer la cont
 - **Élection** : **SW-DIST-01** configuré en "Active" (Priority 110 + Preempt).
 - **Relais DHCP** : Activation du `ip helper-address` pointant vers le Windows Server (192.168.20.10).
 
-🔗 [Consulter les configs](/configs/03_hsrp.md) 🧪 [Consulter les tests]()
+🔗 [Consulter les configs](/configs/03_hsrp.md) 🧪 [Consulter les tests](/test/03_hsrp.md)
 
 ---
 
