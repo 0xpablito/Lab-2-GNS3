@@ -40,6 +40,7 @@ Ce document valide la sortie Internet, la distribution automatique des adresses 
 *   **Résultat attendu :** 
     *   Le serveur répond avec son IP (192.168.20.10) pour les requêtes internes.
     *   Les forwarders DNS (8.8.8.8) permettent de joindre les domaines externes.
+><img width="842" height="406" alt="image" src="https://github.com/user-attachments/assets/8c656497-8f82-42e9-adec-2fdea0604533" />
 
 
 ---
