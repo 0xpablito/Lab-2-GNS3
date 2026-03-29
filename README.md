@@ -18,7 +18,8 @@ L'objectif est de franchir un cap supplémentaire en travaillant avec des images
 
 ## 1. 🗺️ Vue d'ensemble
 
-><img width="1104" height="510" alt="image" src="https://github.com/user-attachments/assets/e3612f0a-fbec-43cf-b609-8e69168c7e3c" />
+><img width="726" height="588" alt="image" src="https://github.com/user-attachments/assets/84c95095-e781-4487-8841-7957175abf6d" />
+
 
 
 
