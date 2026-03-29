@@ -68,7 +68,4 @@ Sécurisation des accès administratifs.
 access-list 99 permit 192.168.99.0 0.0.0.255
 line vty 0 4
  access-class 99 in
- transport input ssh
- exec-timeout 10 0
- logging synchronous
 ```
