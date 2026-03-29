@@ -41,9 +41,9 @@ interface Vlan 20
 Sécurisation des ports terminaux et protection contre les attaques de couche 2.
 ```
 ip dhcp snooping
-ip dhcp snooping vlan 10,20,30,40,99
+ip dhcp snooping vlan 10,20,30,40
 no ip dhcp snooping information option
-ip arp inspection vlan 10,20,30,40,99
+ip arp inspection vlan 10,20,30,40
 
  Configuration des Uplinks vers Distribution
 interface range gi0/0 - 1
