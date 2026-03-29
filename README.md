@@ -48,6 +48,7 @@ Déploiement d'une configuration uniformisée sur l'ensemble des équipements et
 - **Console & VTY** : Authentification locale, timeout 10 min, logging synchronous
 - **Sécurité DNS** : Désactivation du DNS lookup pour éviter les délais en CLI
 - **Bannière** : Message d'avertissement légal sur toutes les lignes d'accès
+- **Horodatage (NTP)** : Synchronisation temporelle sur le serveur 192.168.20.10 pour la cohérence des logs.
 - **Management** : SVI VLAN 99 dédiée sur chaque équipement (192.168.99.0/24)
 
 🔗 [Consulter les configs](/configs/01_base_setup.md) 🧪 [Consulter les tests](/test/01_base_setup.md)
