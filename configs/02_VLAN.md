@@ -37,14 +37,12 @@ interface range   (Adapter selon le switch)
  switchport trunk allowed vlan 10,20,30,40,99,100
  switchport nonegotiate
 ```
-### 4. Accès Terminaux & Sécurité (Edge Ports)
-Configuration d'un port utilisateur (ex: PC-01) avec protection contre les boucles.
+### 4. Accès Terminaux 
+Configuration d'un port utilisateur (ex: PC-01).
 ```
 interface Gi3/2
  switchport mode access
  switchport access vlan 10
- spanning-tree portfast        ! Passage immédiat en Forwarding
- spanning-tree bpduguard enable ! Protection contre switches sauvages
  no shutdown
 ```
 ### 5. Sécurisation des ports inutilisés
