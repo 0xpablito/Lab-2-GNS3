@@ -129,7 +129,7 @@ Objectif : Sécuriser les plans de contrôle et de données en limitant les flux
     *   **Port-Security** : Limitation à 2 adresses MAC par port avec apprentissage `sticky` pour prévenir les attaques de type MAC Flooding.
 ---
 
-🔗 [Consulter les configs]() 🧪 [Consulter les tests]()
+🔗 [Consulter les configs](configs/06_SECURITY.md) 🧪 [Consulter les tests]()
 
 ---
 
