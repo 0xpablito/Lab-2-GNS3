@@ -38,6 +38,10 @@ line vty 0 4
  transport input ssh              ! Autorise uniquement le SSH (Telnet bloqué)
  exec-timeout 10 0               ! Déconnexion après 10 min d'inactivité
 ```
+### Synchronisation Horloge (NTP)
+```
+ntp server 192.168.20.10         ! Synchronise l'horloge sur le serveur Windows
+```
 ### Message d'avertissement 
 ```
 banner motd ^
