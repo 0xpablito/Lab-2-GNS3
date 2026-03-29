@@ -51,5 +51,7 @@ Ce document regroupe les tests techniques validant la configuration de sécurit�
 *   **Test Logging Sync :** Générer un log (ex: `no shutdown` sur une interface). Le log ne doit pas couper la saisie de la commande en cours.
 *   **Test No Domain-Lookup :** Saisir une commande erronée au mode privilège (ex: `azerty`). 
 *   **Résultat attendu :** L'équipement doit rendre la main immédiatement sans tenter de résolution DNS ("Translating...").
+><img width="864" height="192" alt="image" src="https://github.com/user-attachments/assets/aa098dec-7abf-49b1-9ae9-864477f31018" />
+
 
 ---
