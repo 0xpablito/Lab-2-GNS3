@@ -34,7 +34,7 @@ ip access-list extended ACL-SERVER
 exit
 
 interface Vlan 20
- ip access-group ACL-SERVER-HARDENING out
+ ip access-group ACL-SERVER out
 ```
 
 ## 2. Accès (SW-ACC-01, 02, 03)
