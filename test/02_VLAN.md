@@ -36,18 +36,7 @@ Ce document valide la segmentation réseau (VLANs), l'agrégation de liens (Ethe
     *   VLANs allowed : Liste restreinte (10, 20, 30, 40, 99, 100).
 ><img width="1665" height="542" alt="image" src="https://github.com/user-attachments/assets/5b0508da-a3ef-442d-b5b5-2d0e21fc4ccf" />
 
-
-### 4. Sécurisation Spanning-Tree (PortFast & BPDU Guard)
-**Objectif :** Garantir la stabilité de la topologie et la protection contre les boucles ou switches non autorisés.
-
-*   **Commande exécutée :** `show spanning-tree interface [Nom_Interface] detail`
-*   **Points de contrôle :** 
-    *   Vérifier que le port utilisateur est en mode `Edge` (PortFast).
-    *   Vérifier que `BPDU guard is enabled` est présent.
-><img width="1779" height="338" alt="image" src="https://github.com/user-attachments/assets/d8715e99-8e42-4893-9b5b-3828c53cb7d3" />
-
-
-### 5. Isolation des ports inutilisés (BlackHole)
+### 4. Isolation des ports inutilisés (BlackHole)
 **Objectif :** Preuve de l'application de la politique de sécurité "Zéro Confiance" sur les ports vacants.
 
 *   **Commande exécutée :** `show ip interface brief` ou `show interface status`
