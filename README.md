@@ -134,6 +134,21 @@ Objectif : Sécuriser les plans de contrôle et de données en limitant les flux
 ---
 
 ## 4. 🔍 Troubleshooting
+### 1. Échec de l'obtention d'adresse IP (DHCP Snooping)
+* **Symptôme** : Les postes clients (VPCS) affichent un échec lors de la requête DHCP (`Can't find DHCP server` ou boucle de `DDD`), alors que le service fonctionnait avant l'activation de la sécurité.
+* **Diagnostic** : Par défaut, le **DHCP Snooping** considère tous les ports comme "untrusted" (non sûrs). Le commutateur d'accès bloquait les paquets `DHCPOFFER` et `DHCPACK` renvoyés par le serveur Windows car ils arrivaient sur le ports d'accès du switch SW-ACC-02 non configurés explicitement en mode "trust".
+* **Résolution** : 
+  * Configuration du port de confiance sur ls switche d'accès : `ip dhcp snooping trust` sur le port relié au serveur Windows.
+  * Cela autorise le switch à laisser passer les réponses provenant du serveur légitime vers les clients.
+
+### 2. Isolation réseau et blocage ARP (DAI)
+* **Symptôme** : Perte totale de connectivité (Ping impossible) vers la Gateway, même pour les PC ayant déjà une adresse IP correcte ou pour le VLAN de Management.
+* **Diagnostic** : Le **Dynamic ARP Inspection (DAI)** vérifie la validité des paquets ARP en consultant la *DHCP Binding Table*. Deux causes ont provoqué le blocage :
+  * 1. **PC déjà connectés** : Les PC ayant obtenu une IP avant l'activation du Snooping n'étaient pas encore inscrits dans la table ; le DAI a donc rejeté leur trafic ARP.
+  * 2. **Adressage Statique** : Le VLAN 99 (Management) et le VLAN 20 (Serveur) utilisent des IPs statiques. Étant absents de la table de liaison DHCP, ils ont été systématiquement bloqués par le DAI.
+* **Résolution** :
+  * **Pour les clients** : Réinitialisation de l'adressage (`ip dhcp`) pour forcer une nouvelle adresse et l'ajouter dans la table du switch.
+  * **Pour le Management/Serveurs** : Exclusion de ces VLANs de l'inspection ARP via la commande `no ip arp inspection vlan 20,99`.
 
 *(à rédiger)*
 ---
