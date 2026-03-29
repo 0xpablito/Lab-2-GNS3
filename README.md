@@ -116,9 +116,17 @@ Objectif : Permettre aux clients internes d'accéder au Web, de résoudre des no
 
 ### Phase 6 — ACLs & Sécurité
 
-Objectif : Isoler totalement le trafic de gestion et verrouiller l'accès aux plans de contrôle (Control Plane) des équipements.
+Objectif : Sécuriser les plans de contrôle et de données en limitant les flux au strict nécessaire (Principe du moindre privilège).
 
-*(à rédiger)*
+*   **Sécurisation VTY (Management)** : Limitation des accès SSH exclusivement à l'adresse IP de l'administrateur (`192.168.99.50`) via une ACL standard appliquée sur les lignes VTY.
+*   **Isolation Guest (VLAN 40)** : Mise en place d'une ACL étendue interdisant tout accès aux segments internes tout en autorisant les services essentiels (DNS/DHCP) et l'accès Internet (NAT).
+*   **Hardening Serveur (VLAN 20)** : Filtrage des flux entrants vers le Contrôleur de Domaine :
+    *   Accès complet pour le VLAN Management.
+    *   Services métiers (SMB, LDAP) limités aux VLANs Users et RH.
+    *   Autorisation du trafic "Established" pour permettre les mises à jour Windows Update (retour de flux).
+*   **Sécurité Couche 2** :
+    *   **DHCP Snooping & DAI** : Protection contre les serveurs DHCP pirates et l'empoisonnement ARP (ARP Spoofing) par validation des requêtes sur les ports *untrusted*.
+    *   **Port-Security** : Limitation à 2 adresses MAC par port avec apprentissage `sticky` pour prévenir les attaques de type MAC Flooding.
 ---
 
 🔗 [Consulter les configs]() 🧪 [Consulter les tests]()
