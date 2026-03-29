@@ -52,7 +52,7 @@ interface range gi0/0 - 1
 ```
 Port-Security & STP Guards
 ```
-interface range gi0/2 - 3
+interface range gi3/2 - 3
   Limitation MAC
  switchport port-security
  switchport port-security maximum 2
