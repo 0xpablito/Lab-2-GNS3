@@ -1,0 +1,145 @@
+version 15.9
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+!
+hostname R-EDGE-01
+!
+boot-start-marker
+boot-end-marker
+!
+!
+enable secret 9 $9$we.7BUIWEt0OE9$5n5pTtoupsUJxNCDF8Lq0jMMz25jp.OgSZH9Ly0K6c.
+!
+no aaa new-model
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+no ip domain lookup
+ip domain name atlas.local
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+username admin privilege 15 secret 9 $9$8WN3hD6/X0Xfhf$qFrBJznkOCsOX3Zq1BqtMNU8f//bdtm5LOac0F5dAXA
+!
+redundancy
+!
+no cdp log mismatch duplex
+!
+ip tcp synwait-time 5
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 1.1.1.1 255.255.255.255
+!
+interface GigabitEthernet0/0
+ description LINK_DIST-01
+ ip address 10.0.0.1 255.255.255.252
+ ip nat inside
+ ip virtual-reassembly in
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ description LINK_DIST-02
+ ip address 10.0.0.5 255.255.255.252
+ ip nat inside
+ ip virtual-reassembly in
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/2
+ ip address dhcp
+ ip nat outside
+ ip virtual-reassembly in
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/3
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+router ospf 1
+ router-id 1.1.1.1
+ network 1.1.1.1 0.0.0.0 area 0
+ network 10.0.0.0 0.0.0.7 area 0
+ default-information originate
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip nat inside source list 1 interface GigabitEthernet0/2 overload
+ip route 0.0.0.0 0.0.0.0 192.168.122.1
+ip ssh version 2
+!
+ipv6 ioam timestamp
+!
+!
+access-list 1 permit 192.168.0.0 0.0.255.255
+access-list 99 permit 192.168.99.50
+access-list 99 deny   any log
+!
+control-plane
+------------------------------------------------
+   Acces restreint - atlas.local
+   Toute connexion non autorisee est interdite
+------------------------------------------------
+^C
+!
+line con 0
+ privilege level 15
+ logging synchronous
+ login local
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ access-class 99 in
+ login local
+ transport input ssh
+!
+no scheduler allocate
+ntp server 192.168.20.10
+!
+end
