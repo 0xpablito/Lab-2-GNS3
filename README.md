@@ -126,7 +126,7 @@ Objectif : Sécuriser les plans de contrôle et de données en limitant les flux
     *   **DHCP Snooping & DAI** : Protection contre les serveurs DHCP pirates et l'empoisonnement ARP (ARP Spoofing) par validation des requêtes sur les ports *untrusted*.
     *   **Port-Security** : Limitation à 2 adresses MAC par port avec apprentissage `sticky` pour prévenir les attaques de type MAC Flooding.
 
-🔗 [Consulter les configs](configs/06_SECURITY.md) 🧪 [Consulter les tests]()
+🔗 [Consulter les configs](configs/06_SECURITY.md) 🧪 [Consulter les tests](test/06_SECURITY.md)
 
 ---
 
