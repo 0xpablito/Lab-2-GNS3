@@ -80,7 +80,7 @@ Mise en place de la redondance de la passerelle par défaut pour assurer la cont
 - **Élection** : **SW-DIST-01** configuré en "Active" (Priority 110 + Preempt).
 - **Relais DHCP** : Activation du `ip helpeaddress` pointant vers le Windows Server (192.168.20.10).
 
-🔗 [Consulter les configs](/configs/03_hsrp.md) 🧪 [Consulter les tests](/test/03_hsrp.md)
+🔗 [Consulter les configs](/configs/03_hsrp.md) 🧪 [Consulter les tests](/test/03_HSRP.md)
 
 ---
 
@@ -92,7 +92,7 @@ Mise en place des liens routés et du protocole OSPF pour automatiser la diffusi
 - **OSPFv2** : Processus en Area 0 avec annonces des réseaux VLAN.
 - **Sécurisation** : Utilisation de `passive-interface` sur les VLANs utilisateurs pour limiter l'exposition du protocole.
 
-🔗 [Consulter les configs](/configs/04_ospf.md) 🧪 [Consulter les tests]()
+🔗 [Consulter les configs](/configs/04_ospf.md) 🧪 [Consulter les tests](/test/04_OSPF.md)
 
 ---
 
