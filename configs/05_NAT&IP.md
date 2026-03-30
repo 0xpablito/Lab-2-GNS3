@@ -4,7 +4,7 @@
 
 ## 📋 Configuration
 
-### 1. Configuration du NAT et de la sortie Internet (R-CORE)
+### 1. Configuration du NAT et de la sortie Internet (R-EDGE-01)
 ```
 interface GigabitEthernet0/2
  ip address dhcp
