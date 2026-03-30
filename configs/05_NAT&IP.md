@@ -1,6 +1,6 @@
 # Phase 5 — Services IP & NAT
 
-**Cible :** `R-CORE`, `WS-DC-01` & `SW-DIST-01/02`
+**Cible :** `R-EDGE-01`, `WS-DC-01` & `SW-DIST-01/02`
 
 ## 📋 Configuration
 
