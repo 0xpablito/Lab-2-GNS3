@@ -1,4 +1,4 @@
-Phase 6 - Sécurisation & ACLs
+# Phase 6 - Sécurisation & ACLs
 
 Ce document regroupe l'implémentation technique des politiques de sécurité sur les équipements de distribution (Layer 3) et d'accès (Layer 2).
 
