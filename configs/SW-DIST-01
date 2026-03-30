@@ -1,0 +1,241 @@
+! Last configuration change at 14:43:05 UTC Mon Mar 30 2026
+!
+version 15.2
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+service compress-config
+!
+hostname SW-DIST-01
+!
+boot-start-marker
+boot-end-marker
+!
+!
+enable secret 5 $1$H0R6$FhxcxIBDvnknFJSOJsitT0
+!
+username admin privilege 15 secret 5 $1$ELoA$kHGAOvSBLHJxi8N3CYWNl/
+no aaa new-model
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain-lookup
+ip domain-name atlas.local
+ip cef
+no ipv6 cef
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Port-channel1
+ switchport trunk allowed vlan 10,20,30,40,99,100
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 100
+ switchport mode trunk
+ switchport nonegotiate
+!
+interface GigabitEthernet0/0
+ description LINK_R-CORE
+ no switchport
+ ip address 10.0.0.2 255.255.255.252
+ negotiation auto
+!
+interface GigabitEthernet0/1
+ description LINK_DIST
+ switchport trunk allowed vlan 10,20,30,40,99,100
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 100
+ switchport mode trunk
+ switchport nonegotiate
+ negotiation auto
+ channel-group 1 mode active
+!
+interface GigabitEthernet0/2
+ description LINK_ACC
+ switchport trunk allowed vlan 10,20,30,40,99,100
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 100
+ switchport mode trunk
+ switchport nonegotiate
+ negotiation auto
+!
+interface GigabitEthernet0/3
+ description LINK_ACC
+ switchport trunk allowed vlan 10,20,30,40,99,100
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 100
+ switchport mode trunk
+ switchport nonegotiate
+ negotiation auto
+!
+interface GigabitEthernet1/0
+ description LINK_ACC
+ switchport trunk allowed vlan 10,20,30,40,99,100
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 100
+ switchport mode trunk
+ switchport nonegotiate
+ negotiation auto
+!
+interface GigabitEthernet1/1
+ description LINK_DIST
+ switchport trunk allowed vlan 10,20,30,40,99,100
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 100
+ switchport mode trunk
+ switchport nonegotiate
+ negotiation auto
+ channel-group 1 mode active
+!
+interface GigabitEthernet1/2
+ negotiation auto
+!
+interface GigabitEthernet1/3
+ negotiation auto
+!
+interface GigabitEthernet2/0
+ negotiation auto
+!
+interface GigabitEthernet2/1
+ negotiation auto
+!
+interface GigabitEthernet2/2
+ negotiation auto
+!
+interface GigabitEthernet2/3
+ negotiation auto
+!
+interface GigabitEthernet3/0
+ negotiation auto
+!
+interface GigabitEthernet3/1
+ negotiation auto
+!
+interface GigabitEthernet3/2
+ negotiation auto
+!
+interface GigabitEthernet3/3
+ negotiation auto
+!
+interface Vlan10
+ ip address 192.168.10.2 255.255.255.0
+ ip helper-address 192.168.20.10
+ standby version 2
+ standby 10 ip 192.168.10.1
+ standby 10 priority 110
+ standby 10 preempt
+!
+interface Vlan20
+ ip address 192.168.20.2 255.255.255.0
+ ip access-group ACL-SERVER out
+ standby version 2
+ standby 20 ip 192.168.20.1
+ standby 20 priority 110
+ standby 20 preempt
+!
+interface Vlan30
+ ip address 192.168.30.2 255.255.255.0
+ ip helper-address 192.168.20.10
+ standby version 2
+ standby 30 ip 192.168.30.1
+ standby 30 priority 110
+ standby 30 preempt
+!
+interface Vlan40
+ description PASSERELLE_GUEST
+ ip address 192.168.40.2 255.255.255.0
+ ip access-group GUEST in
+ ip helper-address 192.168.20.10
+ standby version 2
+ standby 40 ip 192.168.40.1
+ standby 40 priority 110
+ standby 40 preempt
+!
+interface Vlan99
+ ip address 192.168.99.2 255.255.255.0
+ standby version 2
+ standby 99 ip 192.168.99.1
+ standby 99 priority 110
+ standby 99 preempt
+!
+router ospf 1
+ router-id 2.2.2.2
+ passive-interface default
+ no passive-interface GigabitEthernet0/0
+ network 10.0.0.0 0.0.0.3 area 0
+ network 192.168.0.0 0.0.255.255 area 0
+!
+ip forward-protocol nd
+!
+ip http server
+ip http secure-server
+!
+ip ssh version 2
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+ip access-list extended ACL-SERVER
+ permit ip 192.168.99.0 0.0.0.255 host 192.168.20.10
+ permit udp any host 192.168.20.10 eq domain
+ permit udp any host 192.168.20.10 eq bootps
+ permit tcp 192.168.10.0 0.0.0.255 host 192.168.20.10 eq 445
+ permit tcp 192.168.30.0 0.0.0.255 host 192.168.20.10 eq 445
+ permit tcp 192.168.10.0 0.0.0.255 host 192.168.20.10 eq 389
+ permit tcp 192.168.30.0 0.0.0.255 host 192.168.20.10 eq 389
+ permit icmp any host 192.168.20.10 echo
+ permit tcp any host 192.168.20.10 established
+ deny   ip any host 192.168.20.10
+ permit ip any any
+ip access-list extended GUEST
+ permit udp any host 192.168.20.10 eq bootps
+ permit udp any host 192.168.20.10 eq domain
+ deny   ip any 192.168.0.0 0.0.255.255
+ permit ip any any
+!
+access-list 99 permit 192.168.99.50
+!
+!
+!
+!
+control-plane
+!
+banner motd ^C
+------------------------------------------------
+   Acces restreint - Domaine ATLAS.LOCAL
+   Toute connexion non autorisee est interdite
+------------------------------------------------
+^C
+!
+line con 0
+ logging synchronous
+ login local
+line aux 0
+line vty 0 4
+ access-class 99 in
+ login local
+ transport input ssh
+!
+ntp server 192.168.20.10
+!
+end
