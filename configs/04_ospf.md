@@ -1,10 +1,10 @@
-# Phase 4 — Routage Dynamique OSPF (L2)
+# Phase 4 — Routage Dynamique OSPF 
 
-**Cible :** `R-CORE` & `SW-DIST-01/02`
+**Cible :** `R-EDGE-01` & `SW-DIST-01/02`
 
 ## 📋 Configuration
 
-### 1. Configuration du Routeur R-CORE
+### 1. Configuration du Routeur R-EDGE-01
 ```
 interface Gi0/0
  description LINK_TO_SW-DIST-01
@@ -19,6 +19,8 @@ router ospf 1
  router-id 1.1.1.1
  network 10.0.0.0 0.0.0.3 area 0
  network 10.0.0.4 0.0.0.3 area 0
+ network 1.1.1.1 0.0.0.0 area 0
+ default-information originate
 ```
 ### 2. Configuration SW-DIST-01
 ```
