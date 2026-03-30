@@ -49,7 +49,7 @@ ip arp inspection vlan 10,30,40
 interface range gi0/0 - 1
  ip dhcp snooping trust
  ip arp inspection trust
-interface gi3/3 - Lien serveur DHCP
+interface gi3/3 - Lien serveur Windows DHCP
  ip dhcp snooping trust
  ip arp inspection trust
 ```
