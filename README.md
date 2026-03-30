@@ -9,7 +9,8 @@ L'objectif est de franchir un cap supplémentaire en travaillant avec des images
 🛠️ Compétences techniques validées :
 
 * **L2 (Commutation)** : VLANs, Trunks (802.1Q), EtherChannel (LACP), Spanning-Tree (PVST+, PortFast, BPDU Guard).
-* **L3 (Routage)** : Routage Inter-VLAN (SVI), OSPF, HSRP (redondance de passerelle). Services & Sécurité : DHCP, NAT/PAT (Overload), ACLs étendues, SSHv2, NTP.
+* **L3 (Routage)** : Routage Inter-VLAN (SVI), OSPF, HSRP (redondance de passerelle).
+* **Services & Sécurité** : DHCP, NAT/PAT (Overload), ACLs étendues, SSHv2, NTP.
 * **Services d'annuaire** : Active Directory Domain Services (AD DS), DNS intégré, domaine Atlas.local, gestion via PowerShell (Windows Server Core)
 
   > **Méthodologie :** J'ai choisi de segmenter l'implémentation en phases logiques pour garantir une maîtrise totale de l'infrastructure. Cette démarche "étape par étape" m'a permis de tester la configuration à chaque palier, d'identifier immédiatement la source des éventuels dysfonctionnements et de rendre le troubleshooting bien plus efficace.
@@ -78,7 +79,7 @@ Mise en place de la redondance de la passerelle par défaut pour assurer la cont
 
 - **Protocole** : HSRPv2 (protocole propriétaire Cisco) avec IP virtuelles (VIP) en `.1`. 
 - **Élection** : **SW-DIST-01** configuré en "Active" (Priority 110 + Preempt).
-- **Relais DHCP** : Activation du `ip helpeaddress` pointant vers le Windows Server (192.168.20.10).
+- **Relais DHCP** : Activation du `ip helperaddress` pointant vers le Windows Server (192.168.20.10).
 
 🔗 [Consulter les configs](/configs/03_hsrp.md) 🧪 [Consulter les tests](/test/03_HSRP.md)
 
@@ -139,7 +140,7 @@ Si la résolution de problèmes rencontrés lors de la configuration peut paraî
 * **Symptôme** : Les postes clients (VPCS) affichent un échec lors de la requête DHCP (`Can't find DHCP server` ou boucle de `DDD`), alors que le service fonctionnait avant l'activation de la sécurité.
 * **Diagnostic** : Par défaut, le **DHCP Snooping** considère tous les ports comme "untrusted" (non sûrs). Le commutateur d'accès bloquait les paquets `DHCPOFFER` et `DHCPACK` renvoyés par le serveur Windows car ils arrivaient sur le ports d'accès du switch SW-ACC-02 non configurés explicitement en mode "trust".
 * **Résolution** : 
-  * Configuration du port de confiance sur ls switche d'accès : `ip dhcp snooping trust` sur le port relié au serveur Windows.
+  * Configuration du port de confiance sur le switch d'accès : `ip dhcp snooping trust` sur le port relié au serveur Windows.
   * Cela autorise le switch à laisser passer les réponses provenant du serveur légitime vers les clients.
 
 ### 2. Isolation réseau et blocage ARP (DAI)
