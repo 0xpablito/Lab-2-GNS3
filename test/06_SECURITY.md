@@ -9,7 +9,7 @@ L'objectif de cette phase de tests est de confirmer que les mécanismes de durci
 *   **Test effectué** : Demande d'IP via DHCP sur `PC1` (VLAN 10).
 *   **Commande de vérification** : `show ip dhcp snooping binding` sur les switches d'accès.
 *   **Résultat attendu** : L'adresse MAC du PC doit être associée à son IP et à son interface dans la table du switch. Les serveurs DHCP non autorisés doivent être bloqués.
-^><img width="1205" height="395" alt="image" src="https://github.com/user-attachments/assets/7b06e03d-63e8-404c-8aa9-f0d501fcb9c6" />
+><img width="1205" height="395" alt="image" src="https://github.com/user-attachments/assets/7b06e03d-63e8-404c-8aa9-f0d501fcb9c6" />
 
 
 ### 2. Validation du Dynamic ARP Inspection (DAI)
