@@ -1,6 +1,6 @@
 #  Tests de Validation : Phase 2 — Infrastructure de Commutation (L2)
 
-Ce document valide la segmentation réseau (VLANs), l'agrégation de liens (EtherChannel) et la sécurisation du Spanning-Tree.
+Ce document valide la segmentation réseau (VLANs) et de l'agrégation de liens (EtherChannel).
 
 ---
 
