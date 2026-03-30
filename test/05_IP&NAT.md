@@ -5,10 +5,10 @@ Ce document valide la sortie Internet, la distribution automatique des adresses 
 ---
 
 ### 1. Validation du NAT (PAT Overload)
-**Objectif :** Vérifier que le routeur R-CORE translate les adresses privées (RFC 1918) en l'adresse publique de l'interface Gi0/2.
+**Objectif :** Vérifier que le routeur R-EDGE-01 translate les adresses privées en l'adresse publique de l'interface Gi0/2.
 
-*   **Action :** Lancer un ping vers `8.8.8.8` depuis le **PC6** (ou un client du VLAN 10).
-*   **Commande sur R-CORE :** `show ip nat translations`
+*   **Action :** Lancer un ping vers `8.8.8.8` depuis le **MGMT** (ou un client du VLAN 10).
+*   **Commande sur R-EDGE-01 :** `show ip nat translations`
 *   **Résultat attendu :** 
     *   Apparition d'une ligne `icmp` dans la table.
     *   **Inside Local :** IP du PC (ex: 192.168.99.50).
@@ -63,5 +63,5 @@ Ce document valide la sortie Internet, la distribution automatique des adresses 
 *   **Commande sur SW-DIST-01 :** `show ip route 0.0.0.0`
 *   **Résultat attendu :** 
     *   La route doit apparaître comme `O*E2 0.0.0.0/0`.
-    *   Le "Next Hop" doit être l'IP de R-CORE (10.0.0.1nsl).
+    *   Le "Next Hop" doit être l'IP de R-EDGE-01 (10.0.0.1).
 ><img width="1126" height="283" alt="image" src="https://github.com/user-attachments/assets/3da0fff9-9558-4259-b7f5-efc2ee0f20c2" />
