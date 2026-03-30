@@ -18,7 +18,8 @@ L'objectif est de franchir un cap supplémentaire en travaillant avec des images
 
 ## 1. 🗺️ Vue d'ensemble
 
-><img width="726" height="588" alt="image" src="https://github.com/user-attachments/assets/84c95095-e781-4487-8841-7957175abf6d" />
+><img width="1386" height="597" alt="image" src="https://github.com/user-attachments/assets/51cb8fd8-e0be-430f-91fe-dbf8f2f164cf" />
+
 
 
 
@@ -130,6 +131,8 @@ Objectif : Sécuriser les plans de contrôle et de données en limitant les flux
 ---
 
 ## 4. 🔍 Troubleshooting
+Si la résolution de problèmes rencontrés lors de la configuration peut paraître longue et fastidieuse, c'est précisément dans ces phases de dépannage que l'assimilation des concepts techniques se confirme. C'est en confrontant la théorie à la réalité du terrain que l'on passe de l'application de commandes à la compréhension réelle
+
 ### 1. Échec de l'obtention d'adresse IP (DHCP Snooping)
 * **Symptôme** : Les postes clients (VPCS) affichent un échec lors de la requête DHCP (`Can't find DHCP server` ou boucle de `DDD`), alors que le service fonctionnait avant l'activation de la sécurité.
 * **Diagnostic** : Par défaut, le **DHCP Snooping** considère tous les ports comme "untrusted" (non sûrs). Le commutateur d'accès bloquait les paquets `DHCPOFFER` et `DHCPACK` renvoyés par le serveur Windows car ils arrivaient sur le ports d'accès du switch SW-ACC-02 non configurés explicitement en mode "trust".
