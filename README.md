@@ -63,10 +63,6 @@ Segmentation VLAN, agrégation des liens de distribution (LACP) et sécurisation
 - **Segmentation VLAN** : Création de 7 VLANs (Users, Servers, RH, Guest, Management, Native, BlackHole) pour une isolation stricte des flux et une réduction des domaines de diffusion.
 - **Trunking & Sécurité Native** : Standardisation du protocole **IEEE 802.1Q**. Migration du VLAN natif vers le **VLAN 100** pour prévenir le *VLAN Hopping* et filtrage explicite des VLANs autorisés (`allowed vlan`).
 - **EtherChannel (LACP)** : Agrégation des liens physiques entre les switches de distribution (`SW-DIST-01/02`) en un **Port-Channel (Po1)** logique de 2 Gbps via le protocole standard LACP.
-- **Optimisation Spanning-Tree (PVST+)** : 
-    - Configuration pour garantir une topologie sans boucle.
-    - **PortFast** : Activation sur les ports d'accès pour une connectivité immédiate des endpoints.
-    - **BPDU Guard** : Protection contre l'injection de switches non autorisés (err-disable automatique).
 - **VLAN BlackHole (999)** : Neutralisation de tous les ports inutilisés par assignation à un VLAN non routé et extinction administrative (`shutdown`).
 
 🔗 [Consulter les configs](/configs/02_VLAN.md) 🧪 [Consulter les tests](/test/02_VLAN.md)
