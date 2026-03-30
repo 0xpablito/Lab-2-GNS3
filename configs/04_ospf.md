@@ -1,4 +1,4 @@
-# Phase 2 — Infrastructure de Commutation (L2)
+# Phase 4 — Routage Dynamique OSPF (L2)
 
 **Cible :** `R-CORE` & `SW-DIST-01/02`
 
