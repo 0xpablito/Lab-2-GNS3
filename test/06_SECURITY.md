@@ -1,4 +1,4 @@
-## Phase 6 : Rapport de Validation de la Sécurité
+# Phase 6 : Rapport de Validation de la Sécurité
 
 L'objectif de cette phase de tests est de confirmer que les mécanismes de durcissement (Hardening) protègent efficacement l'infrastructure sans perturber les services critiques.
 
