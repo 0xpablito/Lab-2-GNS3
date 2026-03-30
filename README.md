@@ -4,13 +4,15 @@
 
 Ce lab réseau a été conçu et déployé dans le cadre de ma montée en compétences en infrastructure réseau d'entreprise. Il me permet de me familiariser avec GNS3 comme environnement de simulation et VMware Workstation comme hyperviseur hôte, afin de reproduire une architecture réseau proche d'un environnement de production réel.
 
-L'objectif est de franchir un cap supplémentaire en travaillant avec des images IOS réelles sur GNS3, afin de se confronter à des comportements et des contraintes absents des simulateurs pédagogiques.
+L'objectif est de franchir un cap supplémentaire en travaillant avec des images IOS réelles sur GNS3, afin de se confronter à des comportements et des contraintes absents des simulateurs pédagogiques. 
 
 🛠️ Compétences techniques validées :
 
 * **L2 (Commutation)** : VLANs, Trunks (802.1Q), EtherChannel (LACP), Spanning-Tree (PVST+, PortFast, BPDU Guard).
 * **L3 (Routage)** : Routage Inter-VLAN (SVI), OSPF, HSRP (redondance de passerelle). Services & Sécurité : DHCP, NAT/PAT (Overload), ACLs étendues, SSHv2, NTP.
 * **Services d'annuaire** : Active Directory Domain Services (AD DS), DNS intégré, domaine Atlas.local, gestion via PowerShell (Windows Server Core)
+
+  > **Méthodologie :** J'ai choisi de segmenter l'implémentation en phases logiques pour garantir une maîtrise totale de l'infrastructure. Cette démarche "étape par étape" m'a permis de tester la configuration à chaque palier, d'identifier immédiatement la source des éventuels dysfonctionnements et de rendre le troubleshooting bien plus efficace.
 
 ---
 
@@ -75,7 +77,7 @@ Mise en place de la redondance de la passerelle par défaut pour assurer la cont
 
 - **Protocole** : HSRPv2 (protocole propriétaire Cisco) avec IP virtuelles (VIP) en `.1`. 
 - **Élection** : **SW-DIST-01** configuré en "Active" (Priority 110 + Preempt).
-- **Relais DHCP** : Activation du `ip helper-address` pointant vers le Windows Server (192.168.20.10).
+- **Relais DHCP** : Activation du `ip helpeaddress` pointant vers le Windows Server (192.168.20.10).
 
 🔗 [Consulter les configs](/configs/03_hsrp.md) 🧪 [Consulter les tests](/test/03_hsrp.md)
 
@@ -147,11 +149,16 @@ Si la résolution de problèmes rencontrés lors de la configuration peut paraî
 * **Résolution** :
   * **Pour les clients** : Réinitialisation de l'adressage (`ip dhcp`) pour forcer une nouvelle adresse et l'ajouter dans la table du switch.
   * **Pour le Management/Serveurs** : Exclusion de ces VLANs de l'inspection ARP via la commande `no ip arp inspection vlan 20,99`.
-
-*(à rédiger)*
 ---
 
 ## 5. 📄 Configs & Fichiers
 
-*(à rédiger)*
----
+* `/configs/` : Fichiers `.cfg` par équipement (extraits de la running-config).
+* `/topology/` : Fichier projet GNS3 (`.gns3p`) pour reproduction.
+* `/test/` : Rapports détaillés et captures de validation.
+
+| Type d'équipement | Emplacement des fichiers |
+| :--- | :--- |
+| **Routeur de Bordure** | [`configs/R-EDGE-01.cfg`](./configs/R-EDGE-01.cfg) |
+| **Switches Distribution** | [`configs/SW-DIST-01.cfg`](./configs/SW-DIST-01.cfg), [`configs/SW-DIST-02.cfg`](./configs/SW-DIST-02.cfg) |
+| **Switches Accès** | [`configs/SW-ACC-01.cfg`](./configs/SW-ACC-01.cfg), [`configs/SW-ACC-02.cfg`](./configs/SW-ACC-02.cfg), [`configs/SW-ACC-03.cfg`](./configs/SW-ACC-03.cfg) |
