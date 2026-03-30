@@ -1,4 +1,4 @@
-# Configuration de Base et Sécurité
+# Phase 1 — Configuration de Base et Sécurité
 **Cible :** `SW-ACC-01`, `SW-ACC-02`, `SW-ACC-03`,`SW-DIST-01`,`SW-DIST-02`,`R-CORE`
 
 
