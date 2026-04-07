@@ -37,7 +37,7 @@ L'objectif est de franchir un cap supplémentaire en travaillant avec des images
 | **NAT Node** | **Sortie Internet** : Pontage vers l'interface réseau physique (GNS3 Cloud) | `Built-in Node` |
 | **PC-01 à 05** | **Postes Clients** : Validation connectivité, Tests DHCP, ACL & ICMP | `VPCS` |	
 | **PC-MGMT** | **Poste d'Administration** : Diagnostics avancés, tests SSH, Netcat, Nmap | `Network Toolbox (Docker)` |
-| **WS-DC-01** | **Contrôleur de Domaine** : AD DS, DNS intégré, domaine Atlas.local, gestion PowerShell (Core) | `Windows Server 2022 Core` |
+| **WS-DC-01** | **Contrôleur de Domaine** : AD DS, DNS intégré, domaine Atlas.local, gestion PowerShell (Core), DHCP | `Windows Server 2022 Core` |
 
 ---
 
